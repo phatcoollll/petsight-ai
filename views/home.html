@@ -2,15 +2,29 @@
 <section class="hero-band" aria-labelledby="heroTitle">
   <div class="max-w-6xl mx-auto px-5 pt-10 pb-12 md:pt-16 md:pb-20 grid gap-10 lg:gap-16 lg:grid-cols-[7fr_5fr] lg:items-start">
     <div>
-      <h1 id="heroTitle" class="t-display hero-title">Bé nhà bạn đang gặp chuyện gì?</h1>
-      <p class="hero-lead mt-4">Chọn điều bạn đang lo để xem nên làm gì tại nhà và lúc nào cần đưa bé đi khám. Áp dụng cho chó và mèo.</p>
-      <ul class="worry-grid mt-8" aria-label="Các tình huống thường gặp">
-        <li><a href="#bo-an" data-open="bo-an" class="c-mango"><svg class="wi" aria-hidden="true"><use href="#i-bowl"/></svg><span>Bỏ ăn, uống ít</span></a></li>
-        <li><a href="#non-tieu-chay" data-open="non-tieu-chay" class="c-sky"><svg class="wi" aria-hidden="true"><use href="#i-drop"/></svg><span>Nôn hoặc tiêu chảy</span></a></li>
-        <li><a href="#ngua-da" data-open="ngua-da" class="c-blush"><svg class="wi" aria-hidden="true"><use href="#i-scratch"/></svg><span>Gãi nhiều, rụng lông</span></a></li>
-        <li><a href="#mat" data-open="mat" class="c-lilac"><svg class="wi" aria-hidden="true"><use href="#i-eye"/></svg><span>Mắt đỏ, chảy ghèn</span></a></li>
-        <li><a href="#vet-thuong" data-open="vet-thuong" class="c-leaf"><svg class="wi" aria-hidden="true"><use href="#i-bandage"/></svg><span>Bị thương, chảy máu</span></a></li>
-        <li><a href="#ngo-doc" data-open="ngo-doc" class="c-red"><svg class="wi" aria-hidden="true"><use href="#i-bottle"/></svg><span>Nghi ăn phải thứ độc</span><em class="worry-tag">Đi khám ngay</em></a></li>
+      <h1 id="heroTitle" class="t-display hero-title">Bạn cần giúp gì cho bé?</h1>
+      <p class="hero-lead mt-4">Gõ dấu hiệu bạn thấy ở chó, mèo để xem nên làm gì tại nhà và khi nào cần đưa bé đi khám.</p>
+      <form class="hero-search mt-7" role="search" action="/ho-tro" method="get" id="heroSearchForm">
+        <label for="heroSearch" class="sr-only">Tìm hướng dẫn theo dấu hiệu</label>
+        <svg class="hs-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="heroSearch" name="q" type="search" autocomplete="off" placeholder="VD: nôn, ngứa, mắt đỏ">
+        <button type="submit" class="btn btn-primary btn-sm">Tìm</button>
+      </form>
+      <p class="hero-chips mt-3"><span>Hay được tìm:</span>
+        <a href="/ho-tro?q=n%C3%B4n" data-q="nôn">nôn</a>
+        <a href="/ho-tro?q=b%E1%BB%8F%20%C4%83n" data-q="bỏ ăn">bỏ ăn</a>
+        <a href="/ho-tro?q=ng%E1%BB%A9a" data-q="ngứa">ngứa</a>
+        <a href="/ho-tro?q=ng%E1%BB%99%20%C4%91%E1%BB%99c" data-q="ngộ độc">ngộ độc</a>
+        <a href="/ho-tro?q=%E1%BA%A3nh" data-q="ảnh">gửi ảnh</a>
+      </p>
+      <h2 class="hero-sub mt-8">Hoặc chọn tình huống</h2>
+      <ul class="worry-grid mt-3" aria-label="Các tình huống thường gặp">
+        <li><a href="/ho-tro#bo-an" class="c-mango"><svg class="wi" aria-hidden="true"><use href="#i-bowl"/></svg><span>Bỏ ăn, uống ít</span></a></li>
+        <li><a href="/ho-tro#non-tieu-chay" class="c-sky"><svg class="wi" aria-hidden="true"><use href="#i-drop"/></svg><span>Nôn hoặc tiêu chảy</span></a></li>
+        <li><a href="/ho-tro#ngua-da" class="c-blush"><svg class="wi" aria-hidden="true"><use href="#i-scratch"/></svg><span>Gãi nhiều, rụng lông</span></a></li>
+        <li><a href="/ho-tro#mat" class="c-lilac"><svg class="wi" aria-hidden="true"><use href="#i-eye"/></svg><span>Mắt đỏ, chảy ghèn</span></a></li>
+        <li><a href="/ho-tro#vet-thuong" class="c-leaf"><svg class="wi" aria-hidden="true"><use href="#i-bandage"/></svg><span>Bị thương, chảy máu</span></a></li>
+        <li><a href="/ho-tro#ngo-doc" class="c-red"><svg class="wi" aria-hidden="true"><use href="#i-bottle"/></svg><span>Nghi ăn phải thứ độc</span><em class="worry-tag">Đi khám ngay</em></a></li>
       </ul>
       <!-- Chó nằm dưới các ô tình huống: chỉ để trang trí -->
       <svg class="pet-dog" viewBox="0 0 220 124" aria-hidden="true">
@@ -77,61 +91,33 @@
 </section>
 <svg class="band-wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v16c-160 24-340 32-540 16S520 2 340 12 110 40 0 24z"/></svg>
 
-<!-- Lời khuyên theo tình huống: đích đến của danh sách ở phần mở đầu -->
-<section class="max-w-6xl mx-auto px-5 pt-16 md:pt-20" aria-labelledby="adviceTitle">
-  <div class="grid gap-8 lg:grid-cols-[4fr_8fr] lg:gap-16">
-    <div class="lg:sticky lg:top-24 self-start">
-      <h2 id="adviceTitle" class="t-h2">Nên làm gì khi bé có dấu hiệu lạ</h2>
-      <p class="ink-soft mt-3">Cách xử trí ban đầu cho những tình huống người nuôi hỏi nhiều nhất. Khi không chắc, hãy gọi cho bác sĩ thú y: hỏi sớm luôn tốt hơn chờ.</p>
-      <p class="mt-4"><a class="link" href="/kien-thuc?loai=cho&amp;chu-de=chan-thuong">Xem thêm chấn thương thường gặp</a></p>
-    </div>
-
-    <div class="situations">
-      <details id="bo-an">
-        <summary><span class="sit-ico c-mango"><svg aria-hidden="true"><use href="#i-bowl"/></svg></span><span class="sit-q">Bé bỏ ăn, uống ít hơn mọi ngày</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm tại nhà</h3><p>Xem bát nước có sạch không, bé có vừa đổi thức ăn, chuyển nhà hay gặp người lạ. Thử cho ăn một ít thức ăn quen thuộc; với mèo, hâm ấm nhẹ cho dậy mùi. Ghi lại bé bỏ ăn từ khi nào.</p></div>
-          <div class="sit-vet"><h3>Đi khám khi</h3><p>Mèo bỏ ăn quá 24 giờ, chó bỏ ăn quá 1–2 ngày, hoặc bỏ ăn kèm nôn, lừ đừ, sốt. Chó mèo con chỉ cần bỏ vài bữa liền là nên khám.</p></div>
-        </div>
-      </details>
-      <details id="non-tieu-chay">
-        <summary><span class="sit-ico c-sky"><svg aria-hidden="true"><use href="#i-drop"/></svg></span><span class="sit-q">Nôn hoặc tiêu chảy</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm tại nhà</h3><p>Cho bé uống nước từng ít một. Với chó trưởng thành, cho dạ dày nghỉ vài giờ rồi ăn nhạt, chia nhỏ: cơm trắng với ức gà luộc không gia vị. Mèo không nên nhịn ăn lâu. Không tự cho uống thuốc của người.</p></div>
-          <div class="sit-vet"><h3>Đi khám khi</h3><p>Kéo dài quá 24 giờ, có máu, nôn đến mức không giữ được nước, bụng chướng hoặc bé lừ đừ. Chó mèo con và bé lớn tuổi mất nước nhanh, nên khám sớm hơn.</p></div>
-        </div>
-      </details>
-      <details id="ngua-da">
-        <summary><span class="sit-ico c-blush"><svg aria-hidden="true"><use href="#i-scratch"/></svg></span><span class="sit-q">Gãi nhiều, rụng lông, da đỏ</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm tại nhà</h3><p>Rẽ lông tìm bọ chét, ve; phân bọ chét trông như hạt tiêu đen. Ngăn bé liếm, cắn mãi một chỗ. Nhớ lại gần đây có đổi thức ăn hay sữa tắm không. <a class="link" href="/chan-doan">Chụp ảnh vùng da</a> để biết mức độ.</p></div>
-          <div class="sit-vet"><h3>Đi khám khi</h3><p>Da chảy dịch, có mùi hôi, mảng hói lan nhanh, bé gãi đến chảy máu, hoặc ngứa kéo dài hơn một tuần dù đã trị bọ chét.</p></div>
-        </div>
-      </details>
-      <details id="mat">
-        <summary><span class="sit-ico c-lilac"><svg aria-hidden="true"><use href="#i-eye"/></svg></span><span class="sit-q">Mắt đỏ, chảy ghèn, nheo mắt</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm tại nhà</h3><p>Lau ghèn bằng bông thấm nước muối sinh lý, mỗi mắt một miếng bông riêng. Không nhỏ thuốc mắt của người. <a class="link" href="/chan-doan">Chụp ảnh mắt</a> nếu muốn đánh giá thêm.</p></div>
-          <div class="sit-vet"><h3>Đi khám khi</h3><p>Bé nheo hoặc nhắm một mắt, mắt đục, lồi, hoặc ghèn vàng xanh. Bệnh ở mắt có thể nặng lên trong vài giờ, nên khám ngay trong ngày.</p></div>
-        </div>
-      </details>
-      <details id="vet-thuong">
-        <summary><span class="sit-ico c-leaf"><svg aria-hidden="true"><use href="#i-bandage"/></svg></span><span class="sit-q">Bị thương, chảy máu</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm tại nhà</h3><p>Rửa bằng nước muối sinh lý, ép gạc sạch lên vết thương 5–10 phút. Gãy móng thì chấm bột cầm máu hoặc bột bắp vào đầu móng. Ngăn bé liếm vết thương.</p></div>
-          <div class="sit-vet"><h3>Đi khám khi</h3><p>Vết thương sâu, hở miệng, hoặc vẫn chảy máu sau 10 phút ép. Vết mèo cắn dễ thành áp xe dưới da: nếu vài ngày sau sưng to, có mủ hoặc bé sốt, cần đi khám.</p></div>
-        </div>
-      </details>
-      <details id="ngo-doc" class="is-urgent">
-        <summary><span class="sit-ico c-red"><svg aria-hidden="true"><use href="#i-bottle"/></svg></span><span class="sit-q">Nghi bé ăn phải thứ độc</span></summary>
-        <div class="sit-body">
-          <div><h3>Làm ngay</h3><p>Đưa bé đến thú y, mang theo bao bì hoặc phần còn lại của thứ bé đã ăn. Không tự gây nôn, không cho uống sữa hay dầu ăn.</p></div>
-          <div class="sit-vet"><h3>Luôn đi khám</h3><p>Kể cả khi bé chưa có biểu hiện gì. Thường gặp: socola, nho, hành, tỏi, kẹo có xylitol, thuốc của người, thuốc diệt chuột. Hoa ly cực độc với mèo.</p></div>
-        </div>
-      </details>
-    </div>
-  </div>
+<!-- Các cách nhận hỗ trợ -->
+<section class="max-w-6xl mx-auto px-5 pt-14 md:pt-16" aria-labelledby="chanTitle">
+  <h2 id="chanTitle" class="t-h2">Các cách nhận hỗ trợ</h2>
+  <ul class="channels mt-6">
+    <li><a href="/chan-doan" class="channel tint c-sky">
+      <span class="k-ico"><svg aria-hidden="true"><use href="#i-camera"/></svg></span>
+      <span class="ch-title">Phân tích ảnh bằng AI</span>
+      <span class="ch-desc">Gửi ảnh vùng bất thường, biết mức độ khẩn cấp và việc nên làm tiếp.</span>
+      <span class="ch-meta">Khoảng 1 phút, không cần tài khoản</span></a></li>
+    <li><a href="/suc-khoe?muc=phong-kham" class="channel tint c-blush">
+      <span class="k-ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+      <span class="ch-title">Tìm phòng khám thú y</span>
+      <span class="ch-desc">Mở bản đồ các phòng khám quanh bạn. Nên gọi trước khi đến, nhất là ban đêm.</span>
+      <span class="ch-meta">Mở Google Maps</span></a></li>
+    <li><a href="/kien-thuc" class="channel tint c-mango">
+      <span class="k-ico"><svg aria-hidden="true"><use href="#i-book"/></svg></span>
+      <span class="ch-title">Kiến thức chăm sóc</span>
+      <span class="ch-desc">Chăm sóc hằng ngày, xử trí chấn thương nhỏ, đặc điểm các giống chó mèo.</span>
+      <span class="ch-meta">Đọc miễn phí</span></a></li>
+    <li><a href="/lien-he" class="channel tint c-lilac">
+      <span class="k-ico"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+      <span class="ch-title">Liên hệ đội ngũ PetSight</span>
+      <span class="ch-desc">Góp ý về kết quả, báo lỗi, hỏi về dữ liệu. Không tiếp nhận ca khẩn cấp.</span>
+      <span class="ch-meta">Qua email</span></a></li>
+  </ul>
 </section>
+
 
 <!-- Chăm sóc theo độ tuổi: đúng là một trình tự -->
 <section class="max-w-6xl mx-auto px-5 pt-20 md:pt-24" aria-labelledby="stageTitle">
@@ -218,35 +204,3 @@
   </div>
 </section>
 
-<!-- Câu hỏi thường gặp -->
-<section class="max-w-6xl mx-auto px-5 pt-20 md:pt-24" aria-labelledby="faqTitle">
-  <div class="grid gap-8 lg:grid-cols-[4fr_8fr] lg:gap-16">
-    <h2 id="faqTitle" class="t-h2">Về PetSight AI</h2>
-    <div class="faq">
-      <details>
-        <summary>PetSight AI có chẩn đoán bệnh cho thú cưng không?</summary>
-        <div><p>Không. PetSight AI chỉ xem ảnh và đưa ra đánh giá sơ bộ về mức độ khẩn cấp, các nguyên nhân có thể gặp và cách chăm sóc tạm thời. Chỉ bác sĩ thú y khám trực tiếp mới chẩn đoán và kê thuốc được.</p></div>
-      </details>
-      <details>
-        <summary>Ảnh thế nào thì cho kết quả tốt nhất?</summary>
-        <div><p>Chụp gần, đủ sáng (ánh sáng tự nhiên là tốt nhất), lấy nét vào đúng vùng bất thường và giữ máy yên. Nếu vùng đó nhỏ, có thể chụp thêm một ảnh xa hơn để thấy vị trí trên cơ thể. Ảnh mờ hoặc tối sẽ cho kết quả kém chắc chắn hơn.</p></div>
-      </details>
-      <details>
-        <summary>Kết quả Xanh, Vàng, Đỏ nghĩa là gì?</summary>
-        <div><p>Xanh: tình trạng có vẻ ổn định, có thể theo dõi tại nhà. Vàng: nên cho bé đi khám trong vòng 24 giờ. Đỏ: có dấu hiệu khẩn cấp, cần đến cơ sở thú y ngay. Nếu bạn thấy bé tệ hơn những gì kết quả mô tả, hãy tin vào quan sát của mình và đi khám.</p></div>
-      </details>
-      <details>
-        <summary>Ảnh của tôi được xử lý thế nào?</summary>
-        <div><p>Ảnh được gửi qua máy chủ PetSight đến dịch vụ AI Google Gemini để phân tích. Máy chủ PetSight không lưu ảnh gốc; nếu bạn lưu báo cáo vào tài khoản, bạn có thể chọn lưu kèm một ảnh thu nhỏ. Xem chi tiết trong <a class="link" href="/quyen-rieng-tu">chính sách quyền riêng tư</a>.</p></div>
-      </details>
-      <details>
-        <summary>Dùng được cho loài nào?</summary>
-        <div><p>Kết quả tốt nhất với chó và mèo. Chim và các loài khác vẫn dùng được, nhưng đánh giá sẽ thận trọng hơn vì dữ liệu tham khảo ít hơn.</p></div>
-      </details>
-      <details>
-        <summary>Tôi có cần tạo tài khoản không?</summary>
-        <div><p>Không. Bạn có thể phân tích ảnh và dùng mọi công cụ mà không cần đăng nhập. Tài khoản chỉ cần khi bạn muốn lưu báo cáo, lưu hồ sơ nhiều bé hoặc xem nhắc nhở trên máy khác.</p></div>
-      </details>
-    </div>
-  </div>
-</section>

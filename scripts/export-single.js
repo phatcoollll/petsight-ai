@@ -23,7 +23,7 @@ const login = ACCOUNT_PAGES.find((p) => p.route === '/dang-nhap');
 const page = (r) => PAGES.find((p) => p.route === r);
 const SECTIONS = [
   ['trang-chu', page('/'), '/'], ['chan-doan', page('/chan-doan'), '/chan-doan'], ['suc-khoe', page('/suc-khoe'), '/suc-khoe'],
-  ['kien-thuc', page('/kien-thuc'), '/kien-thuc'], ['gioi-thieu', page('/gioi-thieu'), '/gioi-thieu'], ['lien-he', page('/lien-he'), '/lien-he'],
+  ['kien-thuc', page('/kien-thuc'), '/kien-thuc'], ['ho-tro', page('/ho-tro'), '/ho-tro'], ['gioi-thieu', page('/gioi-thieu'), '/gioi-thieu'], ['lien-he', page('/lien-he'), '/lien-he'],
   ['quyen-rieng-tu', page('/quyen-rieng-tu'), '/quyen-rieng-tu'], ['dieu-khoan', page('/dieu-khoan'), '/dieu-khoan'],
   ['dang-nhap', login, '/dang-nhap'], ['khong-tim-thay', NOT_FOUND, '/404'],
 ];
@@ -39,6 +39,9 @@ function toHash(p) {
   const base = m[1].replace(/\/+$/, '') || '/';
   const q = new URLSearchParams((m[2] || '').slice(1));
   if (base === '/') return '#trang-chu';
+  // /ho-tro#ngo-doc → #ngo-doc: bộ chuyển trang mở trang chứa mục đó và mở câu trả lời
+  const anchor = p.split('#')[1];
+  if (base === '/ho-tro' && anchor) return '#' + anchor;
   if (base === '/suc-khoe') return '#suc-khoe' + (q.get('muc') ? '-' + q.get('muc') : '');
   if (base === '/kien-thuc') return '#kien-thuc' + (q.get('loai') ? '-' + q.get('loai') + (q.get('chu-de') ? '-' + q.get('chu-de') : '') : '');
   if (['/dang-ky', '/tai-khoan', '/dang-nhap'].includes(base) || base.startsWith('/tai-khoan/')) return '#dang-nhap';
@@ -163,6 +166,17 @@ const router = `
     el.scrollIntoView();
   }
   window.addEventListener('hashchange', route);
+  // Ô tìm và gợi ý tìm nhanh ở trang chủ: bản một file không có ?q=, nên điền thẳng vào ô tìm của trang hỗ trợ.
+  function searchHelp(q){
+    var s = document.getElementById('helpSearch'); if (!s) return;
+    s.value = q; s.dispatchEvent(new Event('input'));
+    location.hash = 'ho-tro';
+  }
+  var heroForm = document.getElementById('heroSearchForm');
+  if (heroForm) heroForm.addEventListener('submit', function(e){ e.preventDefault(); searchHelp(document.getElementById('heroSearch').value); });
+  document.querySelectorAll('.hero-chips a[data-q]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); searchHelp(a.getAttribute('data-q')); });
+  });
   route();
 })();`;
 
@@ -235,7 +249,7 @@ window.fetch = function(url, opts){
   if (u.indexOf('/api/') === 0) return __api(u, opts);
   return __fetch(url, opts);
 };
-${bundle(['home', 'diagnose', 'suc-khoe', 'knowledge', 'auth'])}
+${bundle(['home', 'diagnose', 'suc-khoe', 'knowledge', 'ho-tro', 'auth'])}
 })();
 ${router}
 </script>

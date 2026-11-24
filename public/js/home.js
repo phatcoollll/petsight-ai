@@ -20,14 +20,3 @@ const photo = setupPhoto({
 });
 
 document.getElementById('heroGo').addEventListener('click', ()=>photo.pick());
-
-// Danh sách tình huống ở phần mở đầu: mở đúng mục lời khuyên bên dưới và đưa con trỏ đến đó.
-function openSituation(id, { focus } = {}){
-  const d = document.getElementById(id);
-  if(!d || d.tagName !== 'DETAILS') return;
-  d.open = true;
-  d.classList.remove('flash'); void d.offsetWidth; d.classList.add('flash');
-  if(focus) d.querySelector('summary').focus({ preventScroll: true });
-}
-document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click', ()=>openSituation(a.dataset.open, { focus: true })));
-if(location.hash) openSituation(location.hash.slice(1));

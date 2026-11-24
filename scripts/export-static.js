@@ -17,7 +17,7 @@ const PUB = path.join(ROOT, 'public');
 const ROUTE_FILE = {
   '/': 'index.html', '/chan-doan': 'chan-doan.html', '/suc-khoe': 'suc-khoe.html', '/kien-thuc': 'kien-thuc.html',
   '/gioi-thieu': 'gioi-thieu.html', '/lien-he': 'lien-he.html', '/quyen-rieng-tu': 'quyen-rieng-tu.html',
-  '/dieu-khoan': 'dieu-khoan.html', '/dang-nhap': 'dang-nhap.html', '/dang-ky': 'dang-ky.html', '/tai-khoan': 'dang-nhap.html',
+  '/dieu-khoan': 'dieu-khoan.html', '/ho-tro': 'ho-tro.html', '/dang-nhap': 'dang-nhap.html', '/dang-ky': 'dang-ky.html', '/tai-khoan': 'dang-nhap.html',
 };
 const NEEDS_SERVER = new Set(['/chan-doan', '/dang-nhap', '/dang-ky']);
 const STATIC_MSG = 'Đây là bản HTML tĩnh, không có máy chủ nên chưa dùng được tính năng này. Hãy chạy PetSight AI trên máy chủ để phân tích ảnh, lập lịch ăn bằng AI hoặc đăng nhập.';

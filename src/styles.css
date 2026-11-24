@@ -497,3 +497,65 @@
   :where(:root[data-theme="dark"]) .theme-btn .ico-sun{ display:block; }
   :where(:root[data-theme="dark"]) .theme-btn .ico-moon{ display:none; }
 }
+
+/* =========================================================
+   Trang chủ kiểu trang hỗ trợ: ô tìm, các cách nhận hỗ trợ, trung tâm hỗ trợ
+   (bố cục tìm kiếm + lọc chủ đề theo mẫu "Searchable Question Index" của 21st.dev)
+   ========================================================= */
+@layer components{
+  /* Ô tìm trên dải màu: nền trắng cố định ở cả hai giao diện */
+  .hero-search{ position:relative; display:flex; align-items:center; gap:.5rem; max-width:34rem; background:#fff; border-radius:999px; padding:.35rem .35rem .35rem 3rem; box-shadow:0 14px 32px -20px rgba(0,0,0,.65); }
+  .hero-search:focus-within{ outline:3px solid #fff; outline-offset:3px; }
+  .hero-search .hs-ico{ position:absolute; left:1.1rem; color:#55615A; pointer-events:none; }
+  .hero-search input{ flex:1; min-width:0; border:0; background:transparent; color:#1C2420; font-size:1.0625rem; padding:.55rem .25rem; outline:none; }
+  .hero-search input::placeholder{ color:#6B766F; }
+  .hero-search .btn{ flex-shrink:0; min-height:44px; padding-inline:1.25rem; }
+  .hero-search input::-webkit-search-cancel-button,.help-search input::-webkit-search-cancel-button{ -webkit-appearance:none; }
+  .hero-chips{ display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .5rem; color:var(--band-soft); font-size:.9375rem; }
+  .hero-chips a,.hero-chips button{ text-decoration:none; display:inline-flex; align-items:center; }
+  .hero-chips a,.hero-chips button{ color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:.2rem .85rem; min-height:36px; font-size:.9375rem; transition:background-color .15s; }
+  .hero-chips a:hover,.hero-chips button:hover{ background:rgba(255,255,255,.12); }
+  @media (pointer:coarse){ .hero-chips a,.hero-chips button{ min-height:44px; } }
+  .hero-sub{ font-size:.9375rem; font-weight:600; color:var(--band-soft); }
+
+  /* Các cách nhận hỗ trợ */
+  .channels{ display:grid; gap:1rem; }
+  @media (min-width:640px){ .channels{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (min-width:1024px){ .channels{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.25rem; } }
+  .channel{ display:flex; flex-direction:column; height:100%; text-decoration:none; transition:transform .15s, box-shadow .15s; }
+  .channel:hover{ transform:translateY(-3px); box-shadow:0 14px 28px -20px rgba(20,40,30,.55); }
+  .channel .k-ico{ margin-bottom:1rem; }
+  .ch-title{ font-family:var(--font-serif); font-weight:600; font-size:1.2rem; line-height:1.25; text-wrap:balance; }
+  .ch-desc{ color:inherit; opacity:.8; margin-top:.35rem; flex:1; }
+  .ch-meta{ margin-top:1rem; font-size:.875rem; font-weight:600; }
+  .channel:hover .ch-title{ text-decoration:underline; text-underline-offset:3px; }
+
+  /* Trung tâm hỗ trợ: ô tìm có nút xóa, nút lọc có số đếm */
+  .help-search{ position:relative; }
+  .help-search .field{ padding-left:2.7rem; padding-right:2.9rem; min-height:50px; border-radius:999px; }
+  .help-search .hs-ico{ position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:var(--ink-soft); pointer-events:none; }
+  .help-clear{ position:absolute; right:.45rem; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:38px; height:38px; border-radius:999px; color:var(--ink-soft); }
+  .help-clear:hover{ background:var(--brand-soft); color:var(--ink); }
+  .help-cats .cnt{ font-size:.75rem; opacity:.7; margin-left:.2rem; font-variant-numeric:tabular-nums; }
+  .sit-body.one{ display:block; }
+  .sit-body.one p{ color:var(--ink-soft); max-width:65ch; }
+}
+
+/* Trung tâm hỗ trợ chia nhóm: mỗi nhóm là một khối có tiêu đề và số đếm */
+@layer components{
+  .help-groups{ display:grid; gap:1.25rem; }
+  .help-group{ background:var(--surface); border:1.5px solid var(--line); border-radius:20px; padding:0 1.25rem; }
+  @media (min-width:768px){ .help-group{ padding:0 1.5rem; } }
+  .hg-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; padding:1.1rem 0 .9rem; }
+  .hg-head h3{ font-family:var(--font-serif); font-weight:600; font-size:1.2rem; line-height:1.25; }
+  .hg-head p{ font-size:.9375rem; color:var(--ink-soft); margin-top:.15rem; }
+  .hg-count{ flex-shrink:0; min-width:2rem; text-align:center; font-size:.875rem; font-weight:600; font-variant-numeric:tabular-nums; padding:.15rem .6rem; border-radius:999px; background:var(--brand-soft); color:var(--brand); }
+  .is-urgent-group{ border-color:color-mix(in srgb, var(--danger) 45%, var(--line)); }
+  .is-urgent-group .hg-head h3{ color:var(--danger); }
+  .is-urgent-group .hg-count{ background:var(--danger-soft); color:var(--danger); }
+  /* Bên trong nhóm: dòng gọn hơn, không viền cuối thừa */
+  .help-group .situations details:last-child{ border-bottom:0; }
+  .help-group .situations summary{ padding:1rem 0; font-size:1.1rem; }
+  .help-group .sit-ico{ width:2.4rem; height:2.4rem; border-radius:12px; }
+  .help-group .sit-ico svg{ width:22px; height:22px; }
+}
