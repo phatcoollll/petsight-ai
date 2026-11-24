@@ -1,0 +1,116 @@
+<section class="page-hero c-sky">
+  <div class="ph-inner max-w-5xl mx-auto px-5">
+    <div>
+      <h1 class="ph-title">Sức khỏe thú cưng</h1>
+      <p class="ph-lead">Lịch tiêm phòng và khám định kỳ, nhu cầu năng lượng và lịch ăn, và tìm phòng khám thú y gần bạn.</p>
+    </div>
+    <div class="ph-art" aria-hidden="true"><div class="stickers"><span class="c-mango"><svg><use href="#i-cal"/></svg></span><span class="c-leaf"><svg><use href="#i-bowl"/></svg></span><span class="c-blush"><svg><use href="#i-pin"/></svg></span></div></div>
+  </div>
+</section>
+<svg class="ph-wave c-sky" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v14c-200 30-420 34-640 14S380 4 200 16 60 30 0 20z"/></svg>
+<div class="max-w-5xl mx-auto px-5 pt-6 md:pt-8">
+  <div id="petBar" class="pet-bar" aria-live="polite"></div>
+
+  <div class="tabs mt-8" role="tablist" aria-label="Chọn mục">
+    <button type="button" role="tab" id="tab-lich-nhac" aria-controls="panel-lich-nhac" data-tab="lich-nhac"><svg aria-hidden="true"><use href="#i-cal"/></svg>Lịch nhắc</button>
+    <button type="button" role="tab" id="tab-dinh-duong" aria-controls="panel-dinh-duong" data-tab="dinh-duong"><svg aria-hidden="true"><use href="#i-bowl"/></svg>Dinh dưỡng</button>
+    <button type="button" role="tab" id="tab-phong-kham" aria-controls="panel-phong-kham" data-tab="phong-kham"><svg aria-hidden="true"><use href="#i-pin"/></svg>Phòng khám</button>
+  </div>
+
+  <section id="panel-lich-nhac" role="tabpanel" aria-labelledby="tab-lich-nhac" tabindex="0" class="tab-panel">
+    <h2 class="t-h2 mt-8">Lịch tiêm phòng và khám định kỳ</h2>
+    <p class="ink-soft mt-2 measure">Ghi lại các mốc tiêm phòng, tẩy giun, khám định kỳ để không bị quên.</p>
+    <div class="grid gap-10 md:grid-cols-[5fr_7fr] mt-6">
+    <form id="healthForm" class="panel grid grid-cols-2 gap-4 content-start" novalidate>
+      <h3 class="col-span-2 t-h3">Thêm nhắc nhở</h3>
+      <div class="col-span-2"><label class="label" for="healthPetName">Tên thú cưng</label><input id="healthPetName" maxlength="60" placeholder="VD: Bông" class="field" required></div>
+      <div class="col-span-2 sm:col-span-1"><label class="label" for="healthType">Loại</label><select id="healthType" class="field"><option value="vaccine">Tiêm phòng</option><option value="deworm">Tẩy giun, ve</option><option value="checkup">Khám định kỳ</option><option value="other">Khác</option></select></div>
+      <div class="col-span-2 sm:col-span-1"><label class="label" for="healthDate">Ngày</label><input id="healthDate" type="date" class="field" required></div>
+      <div class="col-span-2"><label class="label" for="healthNote">Ghi chú <span class="opt">(không bắt buộc)</span></label><input id="healthNote" maxlength="120" placeholder="VD: mũi dại nhắc lại" class="field"></div>
+      <div class="col-span-2">
+        <p id="healthFormError" class="hidden text-sm mb-2" style="color:var(--danger)" role="alert"></p>
+        <button type="submit" id="addHealthBtn" class="btn btn-primary w-full">Thêm nhắc nhở</button>
+      </div>
+    </form>
+
+    <div>
+      <h3 class="t-h3 mb-3">Các mốc đã ghi</h3>
+      <p id="storageNote" class="text-sm ink-soft mb-3"></p>
+      <div id="healthList" aria-live="polite"></div>
+      <div class="tint c-lilac mt-8">
+        <div class="k-ico"><svg aria-hidden="true"><use href="#i-heart"/></svg></div>
+        <h3 class="serif text-xl font-semibold mb-2">Dấu hiệu bất thường cần lưu ý</h3>
+        <p class="ink-soft measure">Bỏ ăn trên 24 giờ, nôn hoặc tiêu chảy kéo dài, thở gấp hoặc khó thở, lừ đừ bất thường, hoặc thay đổi hành vi đột ngột. Theo dõi sát và báo bác sĩ thú y nếu không cải thiện nhanh.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section id="panel-dinh-duong" role="tabpanel" aria-labelledby="tab-dinh-duong" tabindex="0" class="tab-panel" hidden>
+    <h2 class="t-h2 mt-8">Nhu cầu năng lượng và lịch ăn hằng ngày</h2>
+    <p class="ink-soft mt-2 measure">Dành cho chó mèo trưởng thành. Kết quả là điểm khởi đầu để trao đổi với bác sĩ thú y, không phải khẩu phần chính xác. Chó mèo con, đang mang thai hoặc cho con bú có nhu cầu khác hẳn.</p>
+    <div class="grid gap-10 md:grid-cols-[5fr_7fr] mt-6">
+    <form id="nutriForm" class="panel grid grid-cols-2 gap-4 content-start" novalidate>
+      <div class="col-span-2"><label class="label" for="nutriSpecies">Loài</label><select id="nutriSpecies" class="field"><option value="dog">Chó</option><option value="cat">Mèo</option></select></div>
+      <div class="col-span-2"><label class="label" for="nutriBreed">Giống <span class="opt">(không bắt buộc)</span></label><input id="nutriBreed" maxlength="60" placeholder="VD: Poodle, mèo Anh lông ngắn" class="field"></div>
+      <div class="col-span-2"><label class="label" for="nutriWeight">Cân nặng hiện tại (kg)</label><input id="nutriWeight" type="number" min="0.5" max="100" step="0.1" inputmode="decimal" placeholder="VD: 8.5" class="field" aria-describedby="nutriWeightErr"><p id="nutriWeightErr" class="text-sm mt-1.5 hidden" style="color:var(--danger)"></p></div>
+      <div class="col-span-2 sm:col-span-1"><label class="label" for="nutriNeutered">Triệt sản</label><select id="nutriNeutered" class="field"><option value="yes">Đã triệt sản</option><option value="no">Chưa triệt sản</option></select></div>
+      <div class="col-span-2 sm:col-span-1"><label class="label" for="nutriMeals">Số bữa mỗi ngày</label><select id="nutriMeals" class="field"><option value="2">2 bữa</option><option value="3" selected>3 bữa</option><option value="4">4 bữa</option></select></div>
+      <div class="col-span-2"><label class="label" for="nutriActivity">Mức độ vận động</label><select id="nutriActivity" class="field"><option value="low">Ít vận động</option><option value="moderate" selected>Vận động vừa</option><option value="high">Vận động nhiều, làm việc</option></select></div>
+      <div class="col-span-2"><label class="label" for="nutriGoal">Mục tiêu</label><select id="nutriGoal" class="field"><option value="maintain" selected>Giữ cân nặng</option><option value="lose">Giảm cân</option><option value="gain">Tăng cân, phục hồi</option></select></div>
+      <div class="col-span-2"><label class="label" for="nutriNotes">Dị ứng, vấn đề sức khỏe <span class="opt">(không bắt buộc)</span></label><input id="nutriNotes" maxlength="300" placeholder="VD: dị ứng thịt gà, tiêu hóa nhạy cảm" class="field"></div>
+      <div class="col-span-2 flex flex-col gap-2 mt-1">
+        <button type="submit" id="calcNutriBtn" class="btn btn-primary w-full">Tính nhu cầu năng lượng</button>
+        <button type="button" id="timelineBtn" class="btn btn-quiet w-full">Lập lịch ăn bằng AI</button>
+      </div>
+    </form>
+
+    <div>
+      <div id="nutriResult" class="tint c-mango" aria-live="polite">
+        <p class="ink-soft">Điền thông tin rồi bấm "Tính nhu cầu năng lượng" để xem số kcal bé cần mỗi ngày.</p>
+      </div>
+      <div id="nutriTimeline" class="hidden mt-6" aria-live="polite"></div>
+      <div class="tint c-blush mt-8">
+        <div class="k-ico"><svg aria-hidden="true"><use href="#i-bottle"/></svg></div>
+        <h3 class="serif text-xl font-semibold mb-2">Thực phẩm tuyệt đối không cho ăn</h3>
+        <p class="ink-soft measure">Socola, hành, tỏi, nho và nho khô, xylitol (chất tạo ngọt trong kẹo cao su không đường), rượu bia, cà phê, trà, và xương đã nấu chín. Chỉ một lượng nhỏ cũng có thể gây ngộ độc hoặc tổn thương nặng.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section id="panel-phong-kham" role="tabpanel" aria-labelledby="tab-phong-kham" tabindex="0" class="tab-panel" hidden>
+    <h2 class="t-h2 mt-8">Tìm phòng khám thú y gần bạn</h2>
+    <p class="ink-soft mt-2 measure">Mở Google Maps với các phòng khám quanh bạn. Nên gọi trước để hỏi có nhận ca cấp cứu không, nhất là ban đêm.</p>
+    <div class="grid gap-10 md:grid-cols-[6fr_5fr] mt-6">
+    <div class="panel">
+      <h3 class="t-h3 mb-4">Dùng vị trí hiện tại</h3>
+      
+      <a id="findVetBtn" href="https://www.google.com/maps/search/ph%C3%B2ng+kh%C3%A1m+th%C3%BA+y" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-lg w-full sm:w-auto" style="min-height:56px">Tìm phòng khám gần tôi</a>
+      <p id="locationStatus" class="text-sm ink-soft mt-3" role="status"></p>
+      <p class="ink-soft mt-4">Trình duyệt sẽ hỏi quyền vị trí. Vị trí chỉ dùng để mở bản đồ, không gửi về máy chủ PetSight. Nếu bạn không cho phép, bản đồ vẫn mở với kết quả tìm kiếm chung.</p>
+      <p class="text-sm ink-soft mt-6 pt-5 border-t border-line">Liên kết mở Google Maps trong thẻ mới. PetSight AI không có quan hệ hợp tác với phòng khám nào và không xếp hạng phòng khám.</p>
+    </div>
+
+    <div>
+      <div class="sos" style="padding:1.5rem 1.6rem">
+      <h3 class="serif text-xl font-semibold mb-3">Đi ngay, không cần chờ, nếu bé:</h3>
+      <ul class="space-y-2.5">
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Khó thở, nướu hoặc lưỡi tím tái</span></li>
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Chảy máu không cầm được</span></li>
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Co giật, ngất, không đứng dậy được</span></li>
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Nghi ăn phải chất độc</span></li>
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Mèo đực rặn tiểu mà không ra</span></li>
+        <li class="flex gap-3"><span class="dot mt-2" style="background:#fff"></span><span>Bụng chướng căng, nôn khan liên tục</span></li>
+      </ul>
+      </div>
+      <h3 class="t-h3 mt-8 mb-2">Trên đường đi</h3>
+      <ul class="ink-soft space-y-1.5 list-disc pl-5">
+        <li>Giữ bé ấm và yên, hạn chế di chuyển nếu nghi chấn thương.</li>
+        <li>Nếu nghi ngộ độc, mang theo bao bì hoặc chụp ảnh thứ bé đã ăn.</li>
+        <li>Không tự cho uống thuốc của người.</li>
+      </ul>
+    </div>
+  </div>
+  </section>
+</div>

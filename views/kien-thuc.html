@@ -1,0 +1,30 @@
+<section class="page-hero c-mango">
+  <div class="ph-inner max-w-5xl mx-auto px-5">
+    <div>
+      <h1 class="ph-title">Kiến thức thú cưng</h1>
+      <p class="ph-lead">Chăm sóc hằng ngày, xử trí chấn thương nhỏ và đặc điểm các giống phổ biến. Nếu có dấu hiệu khẩn cấp, hãy đưa bé đến <a class="link" href="/suc-khoe?muc=phong-kham">cơ sở thú y gần nhất</a> ngay.</p>
+    </div>
+    <div class="ph-art" aria-hidden="true"><!--pet:dog:ph-pet wide--></div>
+  </div>
+</section>
+<svg class="ph-wave c-mango" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v14c-200 30-420 34-640 14S380 4 200 16 60 30 0 20z"/></svg>
+<div class="max-w-5xl mx-auto px-5 pt-6 md:pt-8">
+  <div class="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6">
+    <div class="seg" role="group" aria-label="Chọn loài">
+      <button type="button" class="species-tab" data-species="dog" aria-pressed="true">Chó</button>
+      <button type="button" class="species-tab" data-species="cat" aria-pressed="false">Mèo</button>
+      <button type="button" class="species-tab" data-species="bird" aria-pressed="false">Chim</button>
+    </div>
+    <div class="seg" role="group" aria-label="Chọn chủ đề">
+      <button type="button" class="topic-tab" data-topic="care" aria-pressed="true">Chăm sóc hằng ngày</button>
+      <button type="button" class="topic-tab" data-topic="injury" aria-pressed="false">Chấn thương thường gặp</button>
+      <button type="button" class="topic-tab" data-topic="breeds" aria-pressed="false">Giống</button>
+    </div>
+  </div>
+  <div id="breedTools" class="mt-6 hidden">
+    <label for="breedSearch" class="label">Tìm giống</label>
+    <input id="breedSearch" type="search" placeholder="VD: Poodle, Ba Tư" class="field sm:max-w-sm" aria-describedby="breedCount">
+    <p id="breedCount" class="text-sm ink-soft mt-2" aria-live="polite"></p>
+  </div>
+  <div id="speciesContent" class="mt-6" aria-live="polite"></div>
+</div>

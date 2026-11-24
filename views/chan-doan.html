@@ -1,0 +1,78 @@
+<section class="page-hero is-band">
+  <div class="ph-inner max-w-5xl mx-auto px-5">
+    <div>
+      <h1 id="dxTitle" class="ph-title">Phân tích ảnh triệu chứng</h1>
+      <p class="ph-lead">Chọn một ảnh rõ nét của vùng bất thường. Các thông tin bên cạnh không bắt buộc, nhưng giúp kết quả sát hơn.</p>
+    </div>
+    <div class="ph-art" aria-hidden="true"><!--pet:cat:ph-pet--></div>
+  </div>
+</section>
+<svg class="ph-wave is-band" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v14c-200 30-420 34-640 14S380 4 200 16 60 30 0 20z"/></svg>
+<div class="max-w-5xl mx-auto px-5 pt-6 md:pt-8">
+  <!-- FORM -->
+  <section id="formView" aria-labelledby="dxTitle">
+    <div id="petBar" class="pet-bar" aria-live="polite"></div>
+
+    <div class="panel grid gap-8 md:grid-cols-[5fr_6fr] mt-6">
+      <div>
+        <button type="button" id="dropzone" class="viewfinder" aria-describedby="dzHint">
+          <span class="vf-c tl"></span><span class="vf-c tr"></span><span class="vf-c bl"></span><span class="vf-c br"></span>
+          <img id="dzPreview" class="vf-photo" hidden alt="Ảnh bạn vừa chọn">
+          <span class="vf-change">Đổi ảnh</span>
+          <span class="vf-idle flex flex-col items-center">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="1.5" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 015.5 7h2l1.2-2h6.6l1.2 2h2A1.5 1.5 0 0120 8.5v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 17.5z"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="mt-3 font-semibold">Chạm để chụp hoặc chọn ảnh</span>
+            <span class="mt-1 text-sm ink-soft hidden md:block">hoặc kéo ảnh vào khung này</span>
+          </span>
+        </button>
+        <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="sr-only" tabindex="-1" aria-hidden="true">
+        <p id="dzHint" class="text-sm ink-soft mt-3">Chụp cận cảnh, đủ sáng, giữ máy yên. JPG, PNG hoặc WebP; ảnh lớn sẽ tự được thu nhỏ.</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 content-start">
+        <div class="col-span-2 sm:col-span-1"><label class="label" for="petName">Tên thú cưng</label><input id="petName" maxlength="60" placeholder="VD: Bông" class="field"></div>
+        <div class="col-span-2 sm:col-span-1"><label class="label" for="petSpecies">Loài</label><select id="petSpecies" class="field"><option value="dog">Chó</option><option value="cat">Mèo</option><option value="bird">Chim</option><option value="other">Khác</option></select></div>
+        <div><label class="label" for="petBreed">Giống</label><input id="petBreed" maxlength="60" placeholder="VD: Poodle" class="field"></div>
+        <div><label class="label" for="petAge">Tuổi</label><input id="petAge" maxlength="40" placeholder="VD: 4 tuổi" class="field"></div>
+        <div class="col-span-2"><label class="label" for="petDuration">Xuất hiện bao lâu rồi?</label><input id="petDuration" maxlength="60" placeholder="VD: 2 ngày" class="field"></div>
+        <div class="col-span-2"><label class="label" for="petNotes">Ghi chú thêm</label><textarea id="petNotes" rows="3" maxlength="300" placeholder="VD: bé liếm và gãi liên tục vùng bụng" class="field"></textarea></div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div id="formError" class="hidden rounded-md p-3 mb-4" style="background:var(--danger-soft); color:var(--danger);" role="alert"></div>
+      <div class="flex flex-col-reverse md:flex-row md:items-center justify-between gap-5">
+        <p class="text-sm ink-soft max-w-xl">Kết quả chỉ để tham khảo, không thay thế việc thăm khám của bác sĩ thú y. Ảnh được gửi đến Google Gemini để phân tích. PetSight chỉ lưu báo cáo khi bạn chọn lưu. Đừng tải ảnh có thông tin cá nhân như giấy tờ, khuôn mặt người.</p>
+        <button type="button" id="analyzeBtn" class="btn btn-primary text-lg shrink-0" style="min-height:56px">Phân tích ảnh ngay</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ĐANG PHÂN TÍCH -->
+  <section id="loadingView" class="hidden py-16" aria-live="polite">
+    <div class="flex justify-center mb-6"><!--pet:cat:ph-pet--></div>
+    <h2 class="serif text-center text-xl mb-2">Đang xem ảnh của bé…</h2>
+    <p class="text-center ink-soft mb-7">Thường mất 10–30 giây. Đừng đóng trang này.</p>
+    <ul class="space-y-2.5 max-w-xs mx-auto" id="stepsList">
+      <li class="step-pending">Xử lý hình ảnh</li>
+      <li class="step-pending">Đối chiếu thông tin bạn nhập</li>
+      <li class="step-pending">Đánh giá mức độ khẩn cấp</li>
+      <li class="step-pending">Tổng hợp việc nên làm</li>
+    </ul>
+  </section>
+
+  <!-- BÁO CÁO (nội dung do report-view.js tạo) -->
+  <section id="reportView" class="hidden max-w-3xl" aria-label="Kết quả đánh giá">
+    <div id="reportBody"></div>
+
+    <div id="saveBox" class="no-print mt-8 py-6 border-t border-b border-line" aria-live="polite"></div>
+
+    <div class="flex flex-wrap gap-3 mt-6 no-print">
+      <button type="button" id="resetBtn" class="btn btn-primary">Phân tích ảnh khác</button>
+      <button type="button" id="printBtn" class="btn btn-quiet">In hoặc lưu PDF</button>
+    </div>
+    <p class="text-sm ink-soft mt-3 no-print">"Phân tích ảnh khác" giữ lại thông tin thú cưng, chỉ xóa ảnh và ghi chú.</p>
+
+    <p class="text-sm ink-soft mt-8">Báo cáo do AI tạo để tham khảo, không phải kết luận y khoa và không thay thế việc thăm khám trực tiếp của bác sĩ thú y.</p>
+  </section>
+</div>

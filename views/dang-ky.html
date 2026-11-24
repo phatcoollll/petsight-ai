@@ -1,0 +1,25 @@
+<div class="max-w-5xl mx-auto px-5 pt-10 md:pt-16 grid gap-12 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-20">
+  <section aria-labelledby="regTitle">
+    <h1 id="regTitle" class="ph-title">Tạo tài khoản</h1>
+    <p class="ink-soft mt-2">Đã có tài khoản? <a class="link" href="/dang-nhap" data-keep-next>Đăng nhập</a></p>
+
+    <form id="authForm" data-mode="register" class="panel mt-8 grid gap-4" novalidate>
+      <div><label class="label" for="name">Tên của bạn <span class="opt">(không bắt buộc)</span></label><input id="name" name="name" autocomplete="name" maxlength="60" class="field"></div>
+      <div><label class="label" for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" class="field" aria-describedby="emailErr"><p id="emailErr" class="field-err hidden"></p></div>
+      <div><label class="label" for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="200" class="field" aria-describedby="passwordHint passwordErr"><p id="passwordHint" class="text-sm ink-soft mt-1.5">Ít nhất 8 ký tự.</p><p id="passwordErr" class="field-err hidden"></p></div>
+      <p id="formErr" class="hidden rounded-md p-3" style="background:var(--danger-soft); color:var(--danger)" role="alert"></p>
+      <button type="submit" class="btn btn-primary w-full mt-1">Tạo tài khoản</button>
+      <p class="text-sm ink-soft">Khi tạo tài khoản, bạn đồng ý với <a class="link" href="/dieu-khoan">điều khoản sử dụng</a> và <a class="link" href="/quyen-rieng-tu">chính sách quyền riêng tư</a>.</p>
+    </form>
+  </section>
+
+  <aside class="tint c-mango auth-aside" aria-label="Dữ liệu được lưu">
+    <!--pet:cat:ph-pet-->
+    <h2 class="serif text-2xl font-semibold">Tài khoản lưu những gì</h2>
+    <ul class="tick-list mt-4 space-y-3 measure">
+      <li><span>Email và mật khẩu đã mã hóa một chiều. PetSight không đọc được mật khẩu của bạn.</span></li>
+      <li><span>Hồ sơ thú cưng, nhắc nhở, và những báo cáo bạn chọn lưu.</span></li>
+      <li><span>Bạn có thể xóa tài khoản cùng toàn bộ dữ liệu bất cứ lúc nào.</span></li>
+    </ul>
+  </aside>
+</div>

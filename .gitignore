@@ -1,0 +1,11 @@
+node_modules
+.env
+skills
+public/build.css
+data/*.db
+data/*.db-*
+
+# Bản xuất tĩnh (tạo bằng scripts/export-*.js)
+export/
+# Dự án riêng tải về để tham khảo, không thuộc PetSight
+free-gemini-api/

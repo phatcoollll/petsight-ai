@@ -1,0 +1,22 @@
+# Cấu hình đăng PetSight AI lên Render (render.com) bằng Blueprint.
+# Render đọc tệp này khi bạn chọn New → Blueprint và trỏ tới kho GitHub chứa dự án.
+# Khoá Gemini KHÔNG nằm ở đây: Render sẽ hỏi bạn nhập GEMINI_API_KEY khi tạo dịch vụ.
+services:
+  - type: web
+    name: petsight-ai
+    runtime: node
+    plan: free
+    # Cần cài cả devDependencies để Tailwind tạo public/build.css.
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      # Render đặt một proxy phía trước: cần để giới hạn tần suất nhận đúng IP người dùng.
+      - key: TRUST_PROXY
+        value: "1"
+      - key: GEMINI_API_KEY
+        sync: false

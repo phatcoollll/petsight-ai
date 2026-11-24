@@ -1,0 +1,67 @@
+<section class="page-hero c-sky">
+  <div class="ph-inner max-w-5xl mx-auto px-5">
+    <div>
+      <h1 class="ph-title">Tài khoản</h1>
+      <p id="whoami" class="ph-lead">&nbsp;</p>
+      <button type="button" id="logoutBtn" class="btn btn-quiet btn-sm mt-5">Đăng xuất</button>
+    </div>
+    <div class="ph-art" aria-hidden="true"><div class="stickers"><span class="c-mango"><svg><use href="#i-user"/></svg></span><span class="c-leaf"><svg><use href="#i-paw"/></svg></span><span class="c-lilac"><svg><use href="#i-cal"/></svg></span></div></div>
+  </div>
+</section>
+<svg class="ph-wave c-sky" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v14c-200 30-420 34-640 14S380 4 200 16 60 30 0 20z"/></svg>
+<div class="max-w-5xl mx-auto px-5 pt-2">
+
+  <!-- Dữ liệu khách trên trình duyệt này: đề nghị chuyển vào tài khoản -->
+  <div id="importBox" class="pet-bar mt-6 hidden" aria-live="polite"></div>
+
+  <section id="thu-cung" class="acct-section" aria-labelledby="petsTitle">
+    <div>
+      <h2 id="petsTitle" class="t-h2">Thú cưng</h2>
+      <p class="ink-soft mt-2 text-[.9375rem]">Chọn được ở đầu các công cụ để tự điền thông tin.</p>
+    </div>
+    <div>
+      <div id="petList" aria-live="polite"><p class="ink-soft py-4">Đang tải…</p></div>
+      <button type="button" id="addPetBtn" class="btn btn-quiet mt-5">Thêm thú cưng</button>
+      <form id="petForm" class="hidden mt-5 panel grid grid-cols-2 gap-4" novalidate aria-labelledby="petFormTitle">
+        <h3 id="petFormTitle" class="t-h3 col-span-2">Thêm thú cưng</h3>
+        <div class="col-span-2 sm:col-span-1"><label class="label" for="fName">Tên</label><input id="fName" maxlength="60" class="field" required></div>
+        <div class="col-span-2 sm:col-span-1"><label class="label" for="fSpecies">Loài</label><select id="fSpecies" class="field"><option value="dog">Chó</option><option value="cat">Mèo</option><option value="bird">Chim</option><option value="other">Khác</option></select></div>
+        <div><label class="label" for="fBreed">Giống</label><input id="fBreed" maxlength="60" class="field"></div>
+        <div><label class="label" for="fAge">Tuổi</label><input id="fAge" maxlength="40" placeholder="VD: 4 tuổi" class="field"></div>
+        <div><label class="label" for="fWeight">Cân nặng (kg)</label><input id="fWeight" type="number" min="0.1" max="150" step="0.1" inputmode="decimal" class="field"></div>
+        <div><label class="label" for="fNeutered">Triệt sản</label><select id="fNeutered" class="field"><option value="yes">Đã triệt sản</option><option value="no">Chưa triệt sản</option></select></div>
+        <div class="col-span-2"><label class="label" for="fAllergies">Dị ứng, vấn đề sức khỏe</label><input id="fAllergies" maxlength="300" class="field"></div>
+        <p id="petFormErr" class="col-span-2 hidden text-sm" style="color:var(--danger)" role="alert"></p>
+        <div class="col-span-2 flex gap-2"><button type="submit" class="btn btn-primary">Lưu</button><button type="button" id="petCancel" class="btn btn-quiet">Hủy</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="lich-su" class="acct-section" aria-labelledby="histTitle">
+    <div>
+      <h2 id="histTitle" class="t-h2">Lịch sử phân tích</h2>
+      <p class="ink-soft mt-2 text-[.9375rem]">Những báo cáo bạn đã chọn lưu.</p>
+    </div>
+    <div id="historyList" aria-live="polite"><p class="ink-soft py-4">Đang tải…</p></div>
+  </section>
+
+  <section class="acct-section" aria-labelledby="remTitle">
+    <h2 id="remTitle" class="t-h2">Nhắc nhở</h2>
+    <p class="ink-soft">Lịch tiêm phòng và khám định kỳ nằm ở trang <a class="link" href="/suc-khoe?muc=lich-nhac">Sức khỏe thú cưng</a>, đã đồng bộ với tài khoản này.</p>
+  </section>
+
+  <section class="acct-section" aria-labelledby="delTitle">
+    <h2 id="delTitle" class="t-h2" style="color:var(--danger)">Xóa tài khoản</h2>
+    <div>
+      <p class="ink-soft measure">Xóa vĩnh viễn tài khoản cùng toàn bộ thú cưng, báo cáo và nhắc nhở. Không thể hoàn tác.</p>
+      <details class="mt-4">
+        <summary class="link" style="color:var(--danger)">Tôi muốn xóa tài khoản</summary>
+        <form id="deleteForm" class="mt-4 max-w-sm grid gap-3" novalidate>
+          <div><label class="label" for="delPassword">Nhập mật khẩu để xác nhận</label><input id="delPassword" type="password" autocomplete="current-password" class="field" required></div>
+          <p id="delErr" class="hidden text-sm" style="color:var(--danger)" role="alert"></p>
+          <button type="submit" class="btn" style="background:var(--danger); color:#fff">Xóa vĩnh viễn tài khoản</button>
+        </form>
+      </details>
+    </div>
+  </section>
+</div>

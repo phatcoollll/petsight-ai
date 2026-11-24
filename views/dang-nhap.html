@@ -1,0 +1,25 @@
+<div class="max-w-5xl mx-auto px-5 pt-10 md:pt-16 grid gap-12 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-20">
+  <section aria-labelledby="loginTitle">
+    <h1 id="loginTitle" class="ph-title">Đăng nhập</h1>
+    <p class="ink-soft mt-2">Chưa có tài khoản? <a class="link" href="/dang-ky" data-keep-next>Tạo tài khoản</a></p>
+
+    <form id="authForm" data-mode="login" class="panel mt-8 grid gap-4" novalidate>
+      <div><label class="label" for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" class="field" aria-describedby="emailErr"><p id="emailErr" class="field-err hidden"></p></div>
+      <div><label class="label" for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="200" class="field" aria-describedby="passwordErr"><p id="passwordErr" class="field-err hidden"></p></div>
+      <p id="formErr" class="hidden rounded-md p-3" style="background:var(--danger-soft); color:var(--danger)" role="alert"></p>
+      <button type="submit" class="btn btn-primary w-full mt-1">Đăng nhập</button>
+    </form>
+    <p class="text-sm ink-soft mt-6">Quên mật khẩu? Tính năng đặt lại mật khẩu qua email chưa có. Hãy <a class="link" href="/lien-he">liên hệ</a> để được hỗ trợ.</p>
+  </section>
+
+  <aside class="tint c-mango auth-aside" aria-label="Lợi ích khi có tài khoản">
+    <!--pet:cat:ph-pet-->
+    <h2 class="serif text-2xl font-semibold">Có tài khoản, bạn có thể</h2>
+    <ul class="tick-list mt-4 space-y-3 measure">
+      <li><span>Lưu hồ sơ của nhiều bé, các công cụ tự điền sẵn.</span></li>
+      <li><span>Lưu báo cáo phân tích để xem lại hoặc đưa bác sĩ thú y xem.</span></li>
+      <li><span>Xem lịch tiêm phòng và khám trên mọi thiết bị.</span></li>
+    </ul>
+    <p class="text-sm ink-soft mt-6 measure">Không cần tài khoản để phân tích ảnh. Bạn vẫn dùng được mọi công cụ khi chưa đăng nhập.</p>
+  </aside>
+</div>
